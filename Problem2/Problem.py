@@ -1,8 +1,8 @@
 from collections.abc import Callable
 import numpy as np
 from typing import List  
-import pandas as pd
 import torch
+import csv
 from torchvision import datasets, transforms
 #
 # Logistic Problem 1
@@ -29,24 +29,29 @@ def train(x_train, label):
    pass
 
 
-
+def onehot(n):
+   a = torch.zeros(10)
+   a[int(n)]= 1
+   return a
 if __name__ == '__main__':
-   train_loader = torch.utils.data.DataLoader(
-      datasets.MNIST('./data/', train=True, download=True,
-                       transform=transforms.Compose([
-                           transforms.ToTensor()])),
-      batch_size=32
-   )
-   for batch in train_loader:
+   with open("./ex1.csv", "r") as f:
+      rdr = csv.reader(f)
+      arr = [line for line in rdr][1:]
+      arr = list(map(lambda x: list(map(float, x)), arr))
+      arr = torch.Tensor(arr)
+      label = arr[:, 0].T
+      data = arr[:, 1:]
+      label = (torch.concatenate(list(map(onehot, label))).reshape(len(label), 10))
+      
+
       # y = x_0 + 2*x_1 + 1 # Note that not all test cases give clear line.
-      x_test = batch[:3, 0]
-      x_train = batch[:,0]
-      label = batch[:,1]
+      x_test = data[:3]
+      x_train = data
       w,b = train(x_train, label) 
       print("weight : " + str(w) + ", bias : " + str(b))
       
       y = torch.softmax(torch.matmul(x_test,w) + b)
       print("Predicted value : " + str(y))
       
-      answer = batch[:3, 1]
+      answer = label[:3]
       print("Actual value : " + str(answer))

@@ -9,30 +9,34 @@ PATH = "/home/runner/Testcase/Lab03/Problem2/"
 
 def getAddress(x):
     return PATH + "ex" + str(x) + ".csv"
+
+def onehot(n):
+   a = torch.zeros(10)
+   a[int(n)]= 1
+   return a
 if __name__ == "__main__":
     ## need to implement grading code
     ## test run example : ./Test.py 1
-    train_loader = torch.utils.data.DataLoader(
-      datasets.MNIST('./data/', train=False, download=True,
-                       transform=transforms.Compose([
-                           transforms.ToTensor()])),
-      batch_size=32
-    )
-    for batch in train_loader:
+    
+    with open(getAddress(1), "r") as f:
+        rdr = csv.reader(f)
+        arr = [line for line in rdr][1:]
+        arr = list(map(lambda x: list(map(float, x)), arr))
+        arr = torch.Tensor(arr)
+        data = arr[:, 1:]
+        label = arr[:,0].T
+        label = (torch.concatenate(list(map(onehot, label))).reshape(len(label), 10))
+      
+      
         ## process torch.Tensor and make comparsion
         ## Answer should be < 1%    relative error.
-        train_data = batch[:-3]
-        test_data = batch[-3:]
-        train_tensor = train_data
-        x_train = train_tensor[:,0]
-        train_label = train_tensor[:,1]
+        x_train = data[:30000]
+        train_label = label[:30000]
         w, b = Problem.train(x_train,train_label)
             
-        test_tensor = test_data
-        x_test = test_tensor[:,0]
-        test_label = test_tensor[:,1]
+        x_test = data[30000:]
+        test_label = label[30000:]
         y = torch.softmax(w*x_test+b)
-            
         error = 1e-1 * test_label
-        
+    
         assert(all(abs(test_label - y) < error)) 
