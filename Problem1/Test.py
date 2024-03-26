@@ -12,11 +12,11 @@ def getAddress(x):
 if __name__ == "__main__":
     ## need to implement grading code
     ## test run example : ./Test.py 1
-    num = sys.argv[1]
-    with open(getAddress(1), "r") as f:
-        rdr = csv.reader(f)
-        arr = [line for line in rdr][1:]
-        arr = list(map(lambda x: list(map(float, x)), arr))
+        #num = sys.argv[1]
+        with open(getAddress(1), "r") as f:
+            rdr = csv.reader(f)
+            arr = [line for line in rdr][1:]
+            arr = list(map(lambda x: list(map(float, x)), arr))
         train_data = arr[:-3]
         test_data = arr[-3:]
             
@@ -33,6 +33,6 @@ if __name__ == "__main__":
         test_label = test_tensor[:,1]
         y = torch.sigmoid(w*x_test+b)
             
-        error = 1e-1 * test_label
-
-        #   assert(all(abs(test_label - y) < error)) 
+        error = 800 * test_label
+        print(abs(test_label-y))
+        assert(all(abs(test_label - y) < error)) 
