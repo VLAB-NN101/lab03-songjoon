@@ -1,7 +1,7 @@
 from collections.abc import Callable
 import numpy as np
 from typing import List  
-import pandas as pd
+import csv
 import torch
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, TensorDataset
@@ -31,16 +31,19 @@ def train(x_train, label):
 
 
 def dataprocess(path):
-   train = pd.read_csv(path)
-   
-   label = torch.Tensor(train[['Survived']].values).T.flatten(0)
-   
-   train.drop(['Survived'], axis=1, inplace=True)
-   train = torch.Tensor(train.values)
-   print(train) 
-   dataloader = DataLoader(TensorDataset(train, label), batch_size=int(label.size()[0]), shuffle=True)
-   for i in dataloader:
-      return i
+   with open(path, "r") as f:
+      rdr = csv.reader(f)
+      arr = [line for line in rdr][1:]
+      #print(list(map(lambda x: list(map(float, x)), arr)))
+      ten = torch.Tensor(list(map(lambda x: list(map(float, x)), arr)))
+      label = ten[:,1].T.flatten(0)
+      
+      train = ten[:,2:]
+      
+      #print(train)
+      dataloader = DataLoader(TensorDataset(train, label), batch_size=int(label.size()[0]), shuffle=True)
+      for i in dataloader:
+         return i
 if __name__ == '__main__':
    loader = dataprocess('./ex1.csv')
    x_train, label = loader
