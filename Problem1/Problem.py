@@ -1,5 +1,4 @@
 from collections.abc import Callable
-import tensorflow as tf
 import numpy as np
 from typing import List  
 import pandas as pd
