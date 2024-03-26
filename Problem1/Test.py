@@ -16,7 +16,7 @@ if __name__ == "__main__":
     with open(getAddress(num), "r") as f:
         rdr = csv.reader(f)
         arr = [line for line in rdr][1:]
-
+        arr = list(map(lambda x: list(map(float, x)), arr))
         train_data = arr[:-3]
         test_data = arr[-3:]
             
