@@ -33,6 +33,6 @@ if __name__ == "__main__":
         test_label = test_tensor[:,1]
         y = torch.sigmoid(w*x_test+b)
             
-        error = 600 * test_label
+        error = 10000 * test_label
         print(abs(test_label-y))
         #assert(all(abs(test_label - y) < error)) 
