@@ -3,7 +3,6 @@ import numpy as np
 from typing import List  
 import torch
 import csv
-from torchvision import datasets, transforms
 #
 # Logistic Problem 1
 #

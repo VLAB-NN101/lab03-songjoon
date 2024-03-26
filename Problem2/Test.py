@@ -4,7 +4,6 @@ import csv
 import sys
 import numpy as np
 import torch
-from torchvision import datasets, transforms
 PATH = "/home/runner/Testcase/Lab03/Problem2/"
 
 def getAddress(x):
