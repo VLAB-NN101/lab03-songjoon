@@ -12,8 +12,8 @@ def getAddress(x):
 if __name__ == "__main__":
     ## need to implement grading code
     ## test run example : ./Test.py 1
-    num = sys.argv[1]
-    with open(getAddress(num), "r") as f:
+    #num = sys.argv[1]
+    with open(getAddress(1), "r") as f:
         rdr = csv.reader(f)
         arr = [line for line in rdr][1:]
         arr = list(map(lambda x: list(map(float, x)), arr))
