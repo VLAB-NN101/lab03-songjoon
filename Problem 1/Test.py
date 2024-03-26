@@ -4,7 +4,7 @@ import csv
 import sys
 import numpy as np
 
-PATH = "/home/runner/Testcase/Lab02/Problem1/"
+PATH = "/home/runner/Testcase/Lab03/Problem1/"
 
 def getAddress(x):
     return PATH + "ex" + str(x) + ".csv"

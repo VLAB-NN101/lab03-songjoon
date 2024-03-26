@@ -34,5 +34,5 @@ if __name__ == "__main__":
         y = torch.softmax(w*x_test+b)
             
         error = 1e-1 * test_label
-
+        
         assert(all(abs(test_label - y) < error)) 
