@@ -34,5 +34,5 @@ if __name__ == "__main__":
         y = torch.sigmoid(w*x_test+b)
             
         error = 10000 * test_label
-        print(abs(test_label-y))
+        #print(abs(test_label-y))
         #assert(all(abs(test_label - y) < error)) 
