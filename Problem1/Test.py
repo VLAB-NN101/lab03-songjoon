@@ -12,7 +12,7 @@ def getAddress(x):
 if __name__ == "__main__":
     ## need to implement grading code
     ## test run example : ./Test.py 1
-    #num = sys.argv[1]
+    num = sys.argv[1]
     with open(getAddress(1), "r") as f:
         rdr = csv.reader(f)
         arr = [line for line in rdr][1:]
@@ -35,4 +35,4 @@ if __name__ == "__main__":
             
         error = 1e-1 * test_label
 
-        #assert(all(abs(test_label - y) < error)) 
+        #   assert(all(abs(test_label - y) < error)) 
