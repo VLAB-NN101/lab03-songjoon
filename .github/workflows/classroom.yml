@@ -1,0 +1,30 @@
+name: Autograding Tests
+'on':
+- push
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test01
+      id: test01
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: Test01
+        setup-command: ''
+        command: "/home/runner/miniconda3/bin/python Problem1/Test.py 1"
+        timeout: 10
+    - name: Autograding Reporter
+      uses: education/autograding-grading-reporter@v1
+      env:
+        TEST01_RESULTS: "${{steps.test01.outputs.result}}"
+      with:
+        runners: test01
