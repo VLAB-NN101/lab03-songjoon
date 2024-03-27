@@ -20,7 +20,7 @@ jobs:
       with:
         test-name: Test01
         setup-command: ''
-        command: "~/miniconda3/bin/python Problem1/Test.py 1"
+        command: "~/miniconda3/bin/python Problem1/Test.py"
         timeout: 10
     - name: Autograding Reporter
       uses: education/autograding-grading-reporter@v1
