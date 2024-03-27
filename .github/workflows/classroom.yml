@@ -19,21 +19,12 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Test01
-        setup-command: conda init
-        command: refreshenv
-        timeout: 10
-    - name: conda init
-      id: conda-init
-      uses: education/autograding-command-grader@v1
-      with:
-        test-name: conda init
-        setup-command: conda activate
+        setup-command: ''
         command: python Problem1/Test.py
         timeout: 10
     - name: Autograding Reporter
       uses: education/autograding-grading-reporter@v1
       env:
         TEST01_RESULTS: "${{steps.test01.outputs.result}}"
-        CONDA-INIT_RESULTS: "${{steps.conda-init.outputs.result}}"
       with:
-        runners: test01,conda-init
+        runners: test01
