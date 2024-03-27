@@ -19,7 +19,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Test01
-        setup-command: ''
+        setup-command: conda activate base
         command: python Problem1/Test.py
         timeout: 10
     - name: Autograding Reporter
