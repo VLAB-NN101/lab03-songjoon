@@ -10,7 +10,7 @@ Determine which person would survive or not.
 123
 Here's structure of information!asdasdasdasd
 
-[Labelasd
+[Labelasdasd
 Survival : Does a man survive? => It would be your output.
 
 [Input]
