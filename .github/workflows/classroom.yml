@@ -19,8 +19,8 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Test01
-        setup-command: ''
-        command: conda init
+        setup-command: conda init
+        command: refreshenv
         timeout: 10
     - name: conda init
       id: conda-init
