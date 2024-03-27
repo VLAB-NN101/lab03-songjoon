@@ -8,7 +8,7 @@ Problem 1 (Titanic Logistic)
 You are given a information about passengers in Titanic when the accident occurs.
 Determine which person would survive or not.
 
-Here's structure of information!
+Here's structure of information!asd
 
 [Label]
 Survival : Does a man survive? => It would be your output.
