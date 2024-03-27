@@ -41,7 +41,7 @@ if __name__ == '__main__':
       label = arr[:, 0].T
       data = arr[:, 1:]
       label = (torch.concatenate(list(map(onehot, label))).reshape(len(label), 10))
-      
+      #print(label)
 
       # y = x_0 + 2*x_1 + 1 # Note that not all test cases give clear line.
       x_test = data[:3]
