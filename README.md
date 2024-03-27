@@ -26,18 +26,18 @@ x_train = Tensor(n, 9)
 label = Tensor(n, 1)
 
 # Problem 2 (MNIST Softmax)
-You are given a information about handwritten number from 0 to 9.
+You are given a information about handwritten number from 0 to 9.<br/>
 Determine what number a image indicates.
 
 Here's structure of information!
-    
-[Label]
-10 one-hot vectors
+
+[Label]<br/>
+10 one-hot vectors<br/>
 *if answer is one, then [0,1,0,0,0,0,...,0]
 
-[Input]
+[Input]<br/>   
 784 vectors(28 * 28 image)
 
-[Tensor structure]
-x_train = Tensor(n, 784)
+[Tensor structure]<br/>
+x_train = Tensor(n, 784)<br/>
 label = Tensor(n, 10)

@@ -3,28 +3,28 @@ import numpy as np
 from typing import List  
 import torch
 import csv
-#
-# Logistic Problem 1
-#
-# Determine whether a passenger would survive or not using the given data.
-# Caution : You should not use library
-#
 
+"""
+Problem2 MNIST Handwriting Softmax
 
-# Data is given as followings:
+You are given a information about handwritten number from 0 to 9.
+Determine what number a image indicates.
 
-# Survival : Does a man survive? => It would be your output.
+Here's structure of information!
 
-# Followings will be your input.
-# passengerId : Id of a passenger
-# pclass : Classes the passenger is in
-# Age 
-# sibsp : # of siblings/spouses abroad *타이타닉 밖 형제 명수
-# parch : # of parents / children abroad. *타이타닉 밖에 부모, 아이들의 수
-# fare : Passenger fare
-#
+[Label]
+10 one-hot vectors
+*if answer is one, then [0,1,0,0,0,0,...,0]
+
+[Input]
+784 vectors(28 * 28 image)
+
+[Tensor structure]
+x_train = Tensor(n, 784)
+label = Tensor(n, 10)
+"""
 def train(x_train, label):
-    # Write your imple  mentation here.
+    # Write your implementation here.
    pass
 
 
@@ -34,6 +34,7 @@ def onehot(n):
    return a
 if __name__ == '__main__':
    with open("./ex1.csv", "r") as f:
+      #Data processing
       rdr = csv.reader(f)
       arr = [line for line in rdr][1:]
       arr = list(map(lambda x: list(map(float, x)), arr))
@@ -41,11 +42,10 @@ if __name__ == '__main__':
       label = arr[:, 0].T
       data = arr[:, 1:]
       label = (torch.concatenate(list(map(onehot, label))).reshape(len(label), 10))
-      #print(label)
-
-      # y = x_0 + 2*x_1 + 1 # Note that not all test cases give clear line.
       x_test = data[:3]
       x_train = data
+
+      #Test
       w,b = train(x_train, label) 
       print("weight : " + str(w) + ", bias : " + str(b))
       
