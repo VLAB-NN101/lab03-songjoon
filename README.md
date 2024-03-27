@@ -24,6 +24,7 @@ S : whether he or she is from Southampton
 Tensor structure  
 x_train = Tensor(n, 9)  
 label = Tensor(n, 1)
+*n = (number of data)
 
 # Problem 2 (MNIST Softmax)
 You are given a information about handwritten number from 0 to 9.  
@@ -39,5 +40,6 @@ Here's structure of information!
 784 vectors(28 * 28 image)
 
 [Tensor structure]  
-x_train = Tensor(n, 784)  
-label = Tensor(n, 10)
+x_train = Tensor(n, 784)
+label = Tensor(n, 10)  
+*n = (number of data)
