@@ -17,6 +17,7 @@ if __name__ == "__main__":
             rdr = csv.reader(f)
             arr = [line for line in rdr][1:]
             arr = list(map(lambda x: list(map(float, x)), arr))
+        
         train_data = arr[:-3]
         test_data = arr[-3:]
             
@@ -32,7 +33,7 @@ if __name__ == "__main__":
         x_test = test_tensor[:,2:]
         test_label = test_tensor[:,1]
         y = torch.sigmoid(w*x_test+b)
-            
+        
         error = 10000 * test_label
         #print(abs(test_label-y))
         #assert(all(abs(test_label - y) < error)) 

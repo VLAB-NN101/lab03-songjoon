@@ -45,16 +45,21 @@ def dataprocess(path):
       for i in dataloader:
          return i
 if __name__ == '__main__':
-   loader = dataprocess('./ex1.csv')
-   x_train, label = loader
-    
-    # y = x_0 + 2*x_1 + 1 # Note that not all test cases give clear line.
-   x_test = torch.Tensor([3,-0.5,26.0,1,0,14.4542,0,1,0], [3,0.5,21.0,0,0,7.65,1,0,0],[3,-0.5,38.0,0,0,7.8958,1,0,0])
-   w,b = train(x_train, label) 
-   print("weight : " + str(w) + ", bias : " + str(b))
-    
-   y = torch.matmul(x_test,w) + b
-   print("Predicted value : " + str(y))
-   
-   answer = torch.tensor([0, 1, 0])
-   print("Actual value : " + str(answer))
+   with open("./ex1.csv", "r") as f:
+      rdr = csv.reader(f)
+      arr = [line for line in rdr][1:]
+      arr = list(map(lambda x: list(map(float, x)), arr))
+      arr = torch.Tensor(arr)
+      label = arr[:, 1]
+      x_train = arr[:, 2:]
+
+      # y = x_0 + 2*x_1 + 1 # Note that not all test cases give clear line.
+      x_test = torch.Tensor([[3.,-0.5,26.0,1.,0.,14.4542,0.,1.,0.], [3.,0.5,21.0,0.,0.,7.65,1.,0.,0.],[3.,-0.5,38.0,0.,0.,7.8958,1.,0.,0.]])
+      w,b = train(x_train, label) 
+      print("weight : " + str(w) + ", bias : " + str(b))
+      
+      y = torch.matmul(x_test,w) + b
+      print("Predicted value : " + str(y))
+      
+      answer = torch.tensor([0., 1., 0.])
+      print("Actual value : " + str(answer))
