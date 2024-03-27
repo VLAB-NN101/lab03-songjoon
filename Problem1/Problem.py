@@ -12,7 +12,7 @@ Here's structure of information!asdasdasdasd
 asd
 [Labelasdasd
 Survival : Does a man survive? => It would be your output.
-
+asd
 [Input]
 pclass : Classes the passenger is in. 1 -> first class, 2 -> second class, 3-> third class
 Age : Age of person.
