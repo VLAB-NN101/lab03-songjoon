@@ -9,7 +9,7 @@ You are given a information about passengers in Titanic when the accident occurs
 Determine which person would survive or not.
 123
 Here's structure of information!asdasdasdasd
-
+asd
 [Labelasdasd
 Survival : Does a man survive? => It would be your output.
 
